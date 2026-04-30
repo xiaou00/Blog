@@ -58,7 +58,7 @@
     {
         "slug": "math-misc/DVR",
         "title": { "en": "Discrete Valuation Rings & Dedekind Domains", "zh": "离散赋值环和其几何意义" },
-        "date": "2026-04-28",
+        "date": "2026-04-30",
         "tag": ["math"],
         "langs": ["en", "zh"]
     }
