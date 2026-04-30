@@ -101,10 +101,11 @@ a { color: inherit; text-decoration: none; }
 .content p  { margin-bottom: 1rem; }
 
 .content ul  { margin: 0.3rem 0 0.3rem 0; list-style: none; }
-.content ol  { margin: 0 0 1rem 1.4rem; }
+.content ol  { margin: 0.3rem 0 0.3rem 0; list-style: none; counter-reset: ol-counter; }
 .content ul > li { margin-bottom: 0.3rem; padding-left: 1.2rem; position: relative; }
 .content ul > li::before { content: ">"; position: absolute; left: 0; color: #cc0000; }
-.content ol > li { margin-bottom: 0.3rem; }
+.content ol > li { margin-bottom: 0.3rem; padding-left: 1.2rem; position: relative; counter-increment: ol-counter; }
+.content ol > li::before { content: counter(ol-counter) "."; position: absolute; left: 0; color: #cc0000; }
 
 .content .katex { font-size: 1.1em; }
 

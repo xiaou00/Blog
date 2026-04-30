@@ -56,10 +56,10 @@
         "langs": ["en", "zh"]
     },
     {
-        "slug": "math-misc/tangents-on-variety",
-        "title": { "en": "Tangents on Varieties", "zh": "代数簇的切线" },
+        "slug": "math-misc/DVR",
+        "title": { "en": "Discrete Valuation Rings & Dedekind Domains", "zh": "离散赋值环和其几何意义" },
         "date": "2026-04-28",
         "tag": ["math"],
-        "langs": ["en" ]
+        "langs": ["en", "zh"]
     }
 ]

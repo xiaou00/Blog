@@ -1,0 +1,204 @@
+# 离散赋值环&Dedekind整环, 光滑曲线
+
+离散赋值环是一类非常重要的环, 本文将介绍离散赋值环的一系列等价定义, 性质, 以及一些能帮助理解离散赋值环的几何直觉.
+
+## 域的(离散)赋值, 以及经典定义
+
+我们先来用"离散赋值环"的字面意思来定义离散赋值环, 我们回顾一个域的赋值的定义:
+
+>[!def] 赋值
+>设 $K$ 是一个域, $\Gamma$ 是一个全序阿贝尔群. 如果存在一个群同态 $v: K^\times \to \Gamma$, 满足
+>$$v(x+y)\geq\min\{v(x),v(y)\}$$
+>则称 $v$ 是 $K$ 上的一个**赋值**(valuation).
+>
+>如果 $\Gamma$ 是 $\mathbb{Z}$, 则称 $v$ 是 $K$ 上的一个**离散赋值**(discrete valuation). 
+
+赋值是一个较为重要的概念, 它是 $p$-adic 数学的基础, 也是代数几何中研究局部性质的一个重要工具. 我们来看几个典型的赋值:
+
+- 设 $K$ 是一个域, 则 $v(x)=0$ 是 $K$ 上的一个赋值, 也是一个离散赋值.
+- 设 $K$ 是 $\mathbb Q$, $p$ 是素数, 则 $v_p(r/s)=v_p(r)-v_p(s)$ 是 $\mathbb Q$ 上的一个离散赋值, 其中 $v_p(n)$ 是 $n$ 中包含的 $p$ 因子的个数. 这个赋值被称为 $p$-adic 赋值.
+- 设 $K$ 是 $k(x)$, 则 $v(f/g)=\deg(g)-\deg(f)$ 是 $k(x)$ 上的一个离散赋值.
+- 设 $K$ 是概形 $X$ 的有理函数域, $x$ 是 $X$ 上的一个点, 则 $v_x(f/g)=\mathrm{ord}_x(f)-\mathrm{ord}_x(g)$ 是 $K$ 上的一个离散赋值, 其中 $\mathrm{ord}_x(f)$ 是 $f$ 在 $x$ 处的零点阶数(如果 $f$ 在 $x$ 处有极点, 则 $\mathrm{ord}_x(f)$ 是 $f$ 在 $x$ 处的极点阶数的相反数).
+
+>[!def] 赋值环 & 离散赋值环 (I)
+>设 $K$ 是一个域, $v$ 是 $K$ 上的一个赋值, 则 $R=\{x\in K:v(x)\geq 0\}$ 是 $K$ 上的一个**赋值环**(valuation ring). 记作 $\mathcal O_v=R$.
+>
+>若一个整环 $A$ 是其分式域 $\mathrm{K}(A)$ 上的某一个离散赋值 $v$ 的赋值环 $\mathcal{O}_v$, 则称 $A$ 是一个**离散赋值环**(discrete valuation ring, DVR).
+
+下面我们可以给出离散赋值环的一个经典定义, 这是交换代数中最常用的定义:
+
+## 离散赋值环的经典代数定义
+
+>[!def] 离散赋值环 (II)
+>一个局部环 $(R,\mathfrak m)$ 若满足:
+>1. $R$ 是Noether环;
+>2. $R$ 的Krull维数为 $1$;
+>3. $\mathfrak m$ 是主理想.
+>则称 $R$ 是一个**离散赋值环**(discrete valuation ring, DVR).
+
+>[!thm] 定理1.
+>(I) <=> (II) => (V).
+
+>[!pf]
+>设 $v:K^\times\to\mathbb Z$ 是 $K$ 上的离散赋值, $\mathcal O_v$ 是对应的离散赋值环.
+>
+>我们先来证明 $\mathcal O_v$ 是局部环且极大理想 $\mathfrak m$ 是主理想. 对于任何 $x\in\mathcal{O}_v$, 若 $v(x)=0$, 那么 $v(x^{-1})=-v(x)=0$, 这意味着 $x^{-1}\in R$, 因此 $x$ 是 $\mathcal O_v$ 中的一个单位(可逆元). $\mathcal O_v$ 中非单位元素构成的集合
+>$$\mathfrak m=\{\,x\in\mathbb R:v(x)>0\,\}$$
+>由于 $v$ 满射到 $\mathbb Z$, 存在 $t\in K$ 使得 $v(t)=1$, 因此对任何 $x\in\mathfrak m$, 设 $v(x)=k\ge 1$, 考虑 $u=x/t^k$, 则 $v(u)=v(x)-kv(t)=0$, 因此 $u$ 是 $\mathcal O_v$ 中的一个单位, 从而 $x=ut^k\in(t)$, 这说明 $\mathfrak m\subseteq(t)$. 另一方面, 对任何 $x\in(t)$, 存在 $y\in\mathcal O_v$ 使得 $x=ty$, 因此 $v(x)=v(t)+v(y)=1+v(y)\ge 1$, 从而 $x\in\mathfrak m$, 这说明 $(t)\subseteq\mathfrak m$. 因此 $\mathfrak m=(t)$ 是一个主理想. 同时 $\mathcal O_v$ 中的非单位元素构成的集合 $\mathfrak m$ 是 $\mathcal O_v$ 中唯一的极大理想, 因此 $\mathcal O_v$ 是一个局部环.
+>
+>下面我们证明 $\mathcal O_v$ 是Noether环, 显然 $\mathcal O_v$ 的任意非零理想都能表示为
+>$$I_k=\{\,x\in\mathcal O_v:v(x)\ge k\,\}$$
+>类似地可以证明 $I_k=(t^k)$, 从而 $\mathcal O_v$ 的任意非零理想都是主理想, 从而是PID, 这蕴含 $\mathcal O_v$ 是Noether环.
+>
+>在 $\mathcal O_v$ 中, 非零素理想必然包含 $t$, 这是因为若 $\mathfrak p$ 是一个非零的素理想, 且 $x\in\mathfrak p$, 则 $v(x)=n\ge 1$, 由于 $x=ut^n\in\mathfrak p$ 且 $u$ 是单位, 必然有 $t^n\in\mathfrak p$, 从而 $t\in\mathfrak p$. 从而 $\mathfrak p=\mathfrak m$, 因此 $\mathcal O_v$ 的Krull维数为 $1$.
+>
+>反之, 设 $(R,\mathfrak m)$ 是一个满足 (II) 的局部环, 则 $\mathfrak m=(t)$ 是一个主理想, 从而 $t$ 是 $\mathfrak m$ 的一个生成元. 定义 $v:K^\times\to\mathbb Z$ 如下: 对任何 $x\in K^\times$, 存在 $n\in\mathbb Z$ 和 $u\in R^\times$ 使得 $x=ut^n$, 定义 $v(x)=n$. 可以验证 $v$ 是 $K$ 上的一个离散赋值, 且 $\mathcal O_v=R$, 从而 $R$ 是一个离散赋值环.
+
+## 正则版本的离散赋值环定义
+
+>[!def] 离散赋值环 (III)
+>一个局部环 $(R,\mathfrak m)$ 若满足:
+>1. $R$ 是Noether环;
+>2. $R$ 的Krull维数为 $1$;
+>3. $R$ 正则.
+>则称 $R$ 是一个**离散赋值环**(discrete valuation ring, DVR).
+
+>[!thm] 定理2.
+>(III) <=> (II).
+
+>[!pf]
+>
+>设 $(R,\mathfrak m)$ 是正则的, 那么 $\mathfrak m/\mathfrak m^2$ 是一个一维的线性空间. 任取 $t\in\mathfrak m/\mathfrak m^2$, 则 $t$ 是 $\mathfrak m/\mathfrak m^2$ 的一个基, 由Nakayama引理, $t$ 也是 $\mathfrak m$ 的一个生成元, 从而 $\mathfrak m=(t)$ 是一个主理想. 因此 $(R,\mathfrak m)$ 满足离散赋值环定义(II)中的条件3. 其他条件在定义(III)中已经满足, 因此 $(R,\mathfrak m)$ 是一个离散赋值环.
+>
+>反之, 设 $(R,\mathfrak m)$ 满足 (II) 的条件, 则 $\mathfrak m=(t)$ 是一个主理想, 从而 $\mathfrak m/\mathfrak m^2$ 是一个一维的线性空间, 因此 $(R,\mathfrak m)$ 是正则的.
+
+这个版本的定义采用了具有强几何意义的正则条件, 这使得我们可以通过几何直觉来理解离散赋值环. 在代数几何中, 离散赋值环对应于光滑曲线上的点的局部性质, 因此这个定义在代数几何中非常常用.
+
+## 其余常见的代数定义
+
+>[!def] 离散赋值环 (IV)
+>一个局部环 $(R,\mathfrak m)$ 若满足:
+>1. $R$ 是Noether环;
+>2. $R$ 的Krull维数为 $1$;
+>3. $R$ 是整环, 且所有理想具有形式 $\mathfrak m^n$ 或 $(0)$.
+>则称 $R$ 是一个**离散赋值环**(discrete valuation ring, DVR).
+
+>[!def] 离散赋值环 (V)
+>一个局部环 $(R,\mathfrak m)$ 若满足:
+>1. $R$ 的Krull维数为 $1$;
+>2. $R$ 是PID.
+>则称 $R$ 是一个**离散赋值环**(discrete valuation ring, DVR).
+
+(I) => (V) 的证明在定理1中已经间接给出.
+
+>[!lem] 引理3.
+>若 $(A,\mathfrak m)$ 是Noether局部环, 则 $I=\cap_i\mathfrak m^i=0$.
+
+>[!pf]
+>由Artin-Rees引理, 存在 $k$ 使得对所有 $n\ge k$ 有
+>$$\mathfrak m^n\cap I=\mathfrak m^{n-k}(\mathfrak m^k\cap I)$$
+>显然有 $I\subset\mathfrak m^n$ 对任意 $n$ 成立, 从而对 $n\ge k$, 有
+>$$I=\mathfrak m^n\cap I=\mathfrak m^{n-k}(\mathfrak m^k\cap I)\subset\mathfrak m^{n-k}I\subset I$$
+>因此 $I=\mathfrak m^{n-k}I$, 由Nakayama引理, $I=0$.
+
+>[!thm] 定理4.
+>(III) <=> (IV).
+
+>[!pf]
+>设 (III) 成立, $(A,\mathfrak m,k)$ 是一个一维的正则局部环, 我们断言对任何 $n$ 都有 $\mathfrak m^n\ne\mathfrak m^{n+1}$, 否则由Nakayama引理, $\mathfrak m^n=0$. 这意味着 $t^n=0$. 然而 $A$ 是整环, $t=0$, 这会导致 $A=A/\mathfrak m$ 构成一个域, 与一维矛盾.
+>
+>我们断言 $\mathfrak m^n/\mathfrak m^{n+1}$ 的维数为 $1$, 因为 $\mathfrak m^n=(t^n)$, 所以 $\mathfrak m^n$ 作为 $A$-模是单个元素生成的, 因此 $\mathfrak m^n/\mathfrak m^{n+1}$ 作为 $k$-模也由单个元素生成, 从而是一维的线性空间.
+>
+>我们得到了一个理想链
+>$$A\supset\mathfrak m\supset\mathfrak m^2\supset\cdots$$
+>其中 $\cap\mathfrak m^i=(0)$ (引理3), 下面我们证明这个理想链中间"没有余地". 取一个理想 $I$, 若其非零, 必然存在某个 $n$ 使得 $\mathfrak m^n\subset I$ 且 $I\not\subset\mathfrak m^{n+1}$ 选取某个 $u\in I\setminus\mathfrak m^{n+1}$, 那么 $(u)\subset I$, 但 $u$ 生成 $\mathfrak m^n/\mathfrak m^{n+1}$, 由Nakayama引理, $u$ 生成 $\mathfrak m^n$, 从而 $I=\mathfrak m^n$.
+>
+>反之, 设 (IV) 成立, 则 $R$ 的非零理想都具有形式 $\mathfrak m^n$, 假设我们有维度为一的Noether局部整环非正则, 则 $\mathfrak m/\mathfrak m^2$ 的维数至少为 $2$, 设 $u\in\mathfrak m\setminus\mathfrak m^2$, 则 $(u,\mathfrak m^2)$ 是一个理想满足 $\mathfrak m^2\subsetneq(u,\mathfrak m^2)\subsetneq\mathfrak m$, 与条件相悖.
+
+>[!def] 离散赋值环 (VI)
+>一个局部环 $(R,\mathfrak m)$ 若满足:
+>1. $R$ 是Noether环;
+>2. $R$ 的Krull维数为 $1$;
+>3. $R$ 是UFD.
+>则称 $R$ 是一个**离散赋值环**(discrete valuation ring, DVR).
+
+>[!thm] 定理5.
+>(V) <=> (VI).
+
+>[!pf]
+>设 (V) 成立, 则 $R$ 是一个PID, 因此是一个UFD. 反之, 设 (VI) 成立, 则 $R$ 是一个UFD, 因此 $R$ 中的任意非零素理想都由一个不可约元素生成, 由于 $R$ 的Krull维数为 $1$, 任意非零素理想都是极大理想, 因此 $R$ 中的任意非零素理想都由一个不可约元素生成, 从而 $R$ 是一个PID.
+
+>[!def] 离散赋值环 (VII)
+>一个局部环 $(R,\mathfrak m)$ 若满足:
+>1. $R$ 是Noether环;
+>2. $R$ 的Krull维数为 $1$;
+>3. $R$ 是整环, 且在其分式域 $\mathrm{K}(R)$ 中整闭.
+>则称 $R$ 是一个**离散赋值环**(discrete valuation ring, DVR).
+
+>[!thm] 定理6.
+>(VI) => (VII).
+
+>[!pf]
+>证明是显然的, 因为UFD必然在其分式域中整闭.
+
+>[!thm] 定理7.
+>(VII) => (II).
+
+>[!pf]
+>设 $(R,\mathfrak m)$ 是满足 (VII) 的局部环, 任取非零的 $r\in\mathfrak m$, 则由Krull主理想定理, $S=A/(r)$ 是一个零维的Noether局部环, 其唯一的素理想是 $\mathfrak m$ 的像, 记作 $\mathfrak n$. 从而对于 $N\gg 0$ 有 $\mathfrak n^N=0$.
+>
+>我们知道在 $A$ 上有 $\mathfrak m^n\subset(r)$ 但 $\mathfrak m^{n-1}\not\subset(r)$, 选取一个元素 $s\in\mathfrak m^{n-1}\setminus(r)$, 考虑分式域 $\mathrm{K}(A)$ 中的元素 $x=s/r$, 因为 $s\notin(r)$, 所以 $x\notin A$, 由于 $A$ 整闭, 这意味着 $x$ 在 $A$ 上不是整的.
+>
+>我们在 $\mathrm{K}(A)$ 上考察 $x\mathfrak m$, 我们断言 $x\mathfrak m\not\subset\mathfrak m$, 否则 $x\mathfrak m\subset\mathfrak m$ 蕴含 $\mathfrak m$ 是一个忠实的 $A[x]$-模, 矛盾.
+>另一方面, 因为 $s\in\mathfrak m^{n-1}$, 所以 $s\mathfrak m\subset\mathfrak m^n\subset(r)$, 于是 $x\mathfrak m=(s/r)\mathfrak m\subset A$,从而 $\mathfrak m=(1/x)A$, 即 $\mathfrak m=(r/s)A$, 因此 $\mathfrak m$ 是一个主理想.
+
+至此, 我们已经证明了离散赋值环的七个定义之间的等价关系, 这说明离散赋值环具有非常丰富的结构, 可以从不同的角度来理解和研究.
+
+## Dedekind整环
+
+>[!def] Dedekind整环
+>一个整环 $A$ 若满足:
+>1. $A$ 是Noether环;
+>2. $A$ 的Krull维数为 $1$;
+>3. $A$ 在 $\mathrm{K}(A)$ 中是整闭的.
+>则称 $A$ 是一个**Dedekind整环**(Dedekind domain).
+
+我们可以用离散赋值环来刻画Dedekind整环:
+
+>[!thm] 定理8. (Dedekind整环的局部性质)
+>一个整环 $A$ 是Dedekind整环当且仅当 $A$ 是Noether的, 且在任何非零素理想 $\mathfrak p$ 上的局部化 $A_{\mathfrak p}$ 是一个离散赋值环.
+
+>[!pf]
+>我们考虑 (VII) 中的离散赋值环定义.
+>
+>由于 $A$ 是Dedekind整环, 显然是Noether的且整闭的, 因此 $A_{\mathfrak p}$ 是Noether且整闭的 (这两个性质被局部化保持). 并且 $A_\mathfrak p$ 的极大理想是 $\mathfrak pA_{\mathfrak p}$, 局部环 $\mathfrak p$ 中的素理想与原环中包含 $\mathfrak p$ 的素理想一一对应, 由于 $A$ 的Krull维数为 $1$, 包含 $\mathfrak p$ 的素理想只有 $\mathfrak p$ 和 $(0)$ 两个, 从而 $A_{\mathfrak p}$ 的Krull维数为 $1$. 因此 $A_{\mathfrak p}$ 满足离散赋值环定义(VII)中的条件, 从而是一个离散赋值环.
+>
+>反之, 设 $A$ 是Noether的整环, 且在任何非零素理想 $\mathfrak p$ 上的局部化 $A_{\mathfrak p}$ 是一个离散赋值环. 假设 $A$ 的维数大于 $1$, 这意味着在 $A$ 中存在一条长度至少为 $2$ 的素理想严格升链
+>$$(0)\subsetneq\mathfrak p_1\subsetneq\mathfrak p_2$$
+>我们对较大的素理想 $\mathfrak p_2$ 进行局部化, 得到 $A_{\mathfrak p_2}$, 那么根据已知条件, $A_{\mathfrak p_2}$ 是一个DVR, 因此其Krull维数为 $1$, 但是由于局部化素理想的对应关系, 在 $A_{\mathfrak p_2}$ 中会产生严格的升链
+>$$(0)\subsetneq\mathfrak p_1A_{\mathfrak p_2}\subsetneq\mathfrak p_2A_{\mathfrak p_2}$$
+>意味着 $A_{\mathfrak p_2}$ 包含至少两个不同的非零素理想, 维数至少为 $2$, 矛盾从而假设不成立.
+>
+>设 $K$ 是 $A$ 的分式域, 由于一个整环可以表示为其在所有极大理想处局部化的交集, 即
+>$$R=\bigcap_{\mathfrak m\,\text{是极大理想}}R_{\mathfrak m}$$
+>根据已知条件, 对于每个极大理想 $\mathfrak m$, $A_\mathfrak m$ 都是DVR, 由于DVR是整闭的, 且任意多个整闭整环的交整闭, 我们证明了 $A$ 整闭, 至此所有条件均满足.
+
+## 几何意义
+
+我们跳转到概形论, 将几何和代数概念对应起来.
+
+>[!def] 仿射正则曲线
+>一个仿射概形 $\mathrm{Spec}~A$ 若满足:
+>1. Krull维数为 $1$;
+>2. 是正则概形;
+>3. 是Noether概形;
+>4. 是整概形 (既约且不可约);
+>
+>则称之为一条**仿射正则曲线** (affine regular curve).
+
+>[!thm] 定理9.
+>$\mathrm{Spec}~A$ 是仿射正则曲线当且仅当 $A$ 是Dedekind整环.
+
+>[!pf]
+>该定理的证明其实意料之内地平凡, 将条件一一翻译成代数形式即可.
+

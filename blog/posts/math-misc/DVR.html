@@ -1,0 +1,230 @@
+<p>Discrete valuation rings are a particularly important class of rings. In this post, we introduce several equivalent definitions of discrete valuation rings, their properties, and some geometric intuition to aid understanding.</p>
+
+<h2>Valuations on Fields, and the Classical Definition</h2>
+
+<p>We begin by defining discrete valuation rings literally from the name, starting with a review of valuations on fields.</p>
+
+<definition name="Valuation">
+Let $K$ be a field and $\Gamma$ a totally ordered abelian group. A group homomorphism $v: K^\times \to \Gamma$ satisfying
+$$v(x+y)\geq\min\{v(x),v(y)\}$$
+is called a <b>valuation</b> on $K$.
+
+If $\Gamma = \mathbb{Z}$, then $v$ is called a <b>discrete valuation</b> on $K$.
+</definition>
+
+<p>Valuations are a fundamental concept underlying $p$-adic mathematics and serve as an important tool in algebraic geometry for studying local properties. Here are several typical examples:</p>
+
+<ul>
+    <li>For any field $K$, the map $v(x)=0$ is a (discrete) valuation on $K$.</li>
+    <li>For $K=\mathbb{Q}$ and a prime $p$, the map $v_p(r/s)=v_p(r)-v_p(s)$ is a discrete valuation on $\mathbb{Q}$, where $v_p(n)$ counts the $p$-adic valuation of $n$. This is called the $p$-adic valuation.</li>
+    <li>For $K=k(x)$, the map $v(f/g)=\deg(g)-\deg(f)$ is a discrete valuation on $k(x)$.</li>
+    <li>For $K$ the function field of a scheme $X$ and $x$ a point of $X$, the map $v_x(f/g)=\mathrm{ord}_x(f)-\mathrm{ord}_x(g)$ is a discrete valuation on $K$, where $\mathrm{ord}_x(f)$ is the order of vanishing of $f$ at $x$ (negative if $f$ has a pole at $x$).</li>
+</ul>
+
+<definition name="Valuation Ring &amp; DVR (I)">
+Let $K$ be a field with valuation $v$. The <b>valuation ring</b> of $v$ is
+$$\mathcal{O}_v=\{x\in K:v(x)\geq 0\}.$$
+
+An integral domain $A$ is a <b>discrete valuation ring</b> (DVR) if it is the valuation ring $\mathcal{O}_v$ of some discrete valuation $v$ on its fraction field $\mathrm{K}(A)$.
+</definition>
+
+<h2>The Classical Algebraic Definition</h2>
+
+<definition name="DVR (II)">
+A local ring $(R,\mathfrak{m})$ is a <b>discrete valuation ring</b> if:
+<ol>
+    <li>$R$ is Noetherian;</li>
+    <li>$R$ has Krull dimension $1$;</li>
+    <li>$\mathfrak{m}$ is a principal ideal.</li>
+</ol>
+</definition>
+
+<theorem>
+(I) &lt;=> (II).
+</theorem>
+
+<proof>
+Let $v:K^\times\to\mathbb{Z}$ be a discrete valuation on $K$ with valuation ring $\mathcal{O}_v$.
+
+We first show $\mathcal{O}_v$ is a local ring with principal maximal ideal. For $x\in\mathcal{O}_v$, if $v(x)=0$ then $v(x^{-1})=0$, so $x^{-1}\in\mathcal{O}_v$ and $x$ is a unit. The set of non-units
+$$\mathfrak{m}=\{\,x\in\mathcal{O}_v:v(x)>0\,\}$$
+forms the unique maximal ideal. Since $v$ is surjective onto $\mathbb{Z}$, there exists $t\in K$ with $v(t)=1$. For any $x\in\mathfrak{m}$ with $v(x)=k\ge 1$, set $u=x/t^k$; then $v(u)=0$ so $u$ is a unit and $x=ut^k\in(t)$, giving $\mathfrak{m}\subseteq(t)$. The reverse inclusion $( t)\subseteq\mathfrak{m}$ is clear, so $\mathfrak{m}=(t)$.
+
+Every nonzero ideal of $\mathcal{O}_v$ has the form $I_k=\{x:v(x)\ge k\}=(t^k)$, so $\mathcal{O}_v$ is a PID and hence Noetherian.
+
+For Krull dimension: any nonzero prime $\mathfrak{p}$ contains some $x$ with $v(x)=n\ge 1$, so $x=ut^n\in\mathfrak{p}$ with $u$ a unit forces $t\in\mathfrak{p}$, hence $\mathfrak{p}=\mathfrak{m}$. Thus $\mathcal{O}_v$ has Krull dimension $1$.
+
+Conversely, if $(R,\mathfrak{m})$ satisfies (II) with $\mathfrak{m}=(t)$, define $v:K^\times\to\mathbb{Z}$ by writing each $x=ut^n$ with $u\in R^\times$ and setting $v(x)=n$. This is a discrete valuation with $\mathcal{O}_v=R$.
+</proof>
+
+<h2>The Regular Local Ring Definition</h2>
+
+<definition name="DVR (III)">
+A local ring $(R,\mathfrak{m})$ is a <b>discrete valuation ring</b> if:
+<ol>
+    <li>$R$ is Noetherian;</li>
+    <li>$R$ has Krull dimension $1$;</li>
+    <li>$R$ is regular.</li>
+</ol>
+</definition>
+
+<theorem>
+(III) &lt;=> (II).
+</theorem>
+
+<proof>
+If $(R,\mathfrak{m})$ is regular, then $\mathfrak{m}/\mathfrak{m}^2$ is one-dimensional. Any $t\in\mathfrak{m}\setminus\mathfrak{m}^2$ is a basis of $\mathfrak{m}/\mathfrak{m}^2$, and by Nakayama's lemma, $t$ generates $\mathfrak{m}$, so $\mathfrak{m}=(t)$ is principal. The remaining conditions hold by assumption, so $(R,\mathfrak{m})$ is a DVR by (II).
+
+Conversely, if (II) holds with $\mathfrak{m}=(t)$, then $\mathfrak{m}/\mathfrak{m}^2$ is one-dimensional, so $(R,\mathfrak{m})$ is regular.
+</proof>
+
+<p>This definition uses the geometrically meaningful regularity condition, allowing us to understand DVRs through geometric intuition. In algebraic geometry, DVRs correspond to the local properties of points on smooth curves, making this definition very useful in that context.</p>
+
+<h2>Further Common Algebraic Definitions</h2>
+
+<definition name="DVR (IV)">
+A local ring $(R,\mathfrak{m})$ is a <b>discrete valuation ring</b> if:
+<ol>
+    <li>$R$ is Noetherian;</li>
+    <li>$R$ has Krull dimension $1$;</li>
+    <li>$R$ is an integral domain, and every ideal has the form $\mathfrak{m}^n$ or $(0)$.</li>
+</ol>
+</definition>
+
+<definition name="DVR (V)">
+A local ring $(R,\mathfrak{m})$ is a <b>discrete valuation ring</b> if:
+<ol>
+    <li>$R$ has Krull dimension $1$;</li>
+    <li>$R$ is a PID.</li>
+</ol>
+</definition>
+
+<p>The implication (I) => (V) was established implicitly in the proof of the first theorem.</p>
+
+<lemma>
+If $(A,\mathfrak{m})$ is a Noetherian local ring, then $I=\bigcap_i\mathfrak{m}^i=0$.
+</lemma>
+
+<proof>
+By the Artin-Rees lemma, there exists $k$ such that for all $n\ge k$,
+$$\mathfrak{m}^n\cap I=\mathfrak{m}^{n-k}(\mathfrak{m}^k\cap I).$$
+Since $I\subset\mathfrak{m}^n$ for all $n$, for $n\ge k$ we get $I=\mathfrak{m}^{n-k}I$. By Nakayama's lemma, $I=0$.
+</proof>
+
+<theorem>
+(III) &lt;=> (IV).
+</theorem>
+
+<proof>
+Suppose (III) holds. Let $(A,\mathfrak{m},k)$ be a one-dimensional regular local ring with $\mathfrak{m}=(t)$. We have $\mathfrak{m}^n\ne\mathfrak{m}^{n+1}$ for all $n$: otherwise Nakayama gives $\mathfrak{m}^n=0$, so $t^n=0$, and since $A$ is a domain, $t=0$, making $A=A/\mathfrak{m}$ a field, contradicting dimension $1$.
+
+Since $\mathfrak{m}^n=(t^n)$, each $\mathfrak{m}^n/\mathfrak{m}^{n+1}$ is one-dimensional. The ideal chain
+$$A\supset\mathfrak{m}\supset\mathfrak{m}^2\supset\cdots$$
+satisfies $\bigcap\mathfrak{m}^i=(0)$ by the lemma. For any nonzero ideal $I$, choose $n$ with $\mathfrak{m}^n\subset I$ but $I\not\subset\mathfrak{m}^{n+1}$. Pick $u\in I\setminus\mathfrak{m}^{n+1}$; then $u$ generates $\mathfrak{m}^n/\mathfrak{m}^{n+1}$, so by Nakayama, $u$ generates $\mathfrak{m}^n$, giving $I=\mathfrak{m}^n$.
+
+Conversely, suppose (IV) holds and $(R,\mathfrak{m})$ is not regular, so $\mathfrak{m}/\mathfrak{m}^2$ has dimension at least $2$. Pick $u\in\mathfrak{m}\setminus\mathfrak{m}^2$; then $(u,\mathfrak{m}^2)$ is an ideal satisfying $\mathfrak{m}^2\subsetneq(u,\mathfrak{m}^2)\subsetneq\mathfrak{m}$, contradicting (IV).
+</proof>
+
+<definition name="DVR (VI)">
+A local ring $(R,\mathfrak{m})$ is a <b>discrete valuation ring</b> if:
+<ol>
+    <li>$R$ is Noetherian;</li>
+    <li>$R$ has Krull dimension $1$;</li>
+    <li>$R$ is a UFD.</li>
+</ol>
+</definition>
+
+<theorem>
+(V) &lt;=> (VI).
+</theorem>
+
+<proof>
+If (V) holds, then $R$ is a PID and hence a UFD. Conversely, if (VI) holds, then $R$ is a UFD and every nonzero prime ideal is generated by an irreducible element. Since $R$ has Krull dimension $1$, every nonzero prime is maximal, so every nonzero ideal is principal, making $R$ a PID.
+</proof>
+
+<definition name="DVR (VII)">
+A local ring $(R,\mathfrak{m})$ is a <b>discrete valuation ring</b> if:
+<ol>
+    <li>$R$ is Noetherian;</li>
+    <li>$R$ has Krull dimension $1$;</li>
+    <li>$R$ is an integral domain, integrally closed in its fraction field $\mathrm{K}(R)$.</li>
+</ol>
+</definition>
+
+<theorem>
+(VI) => (VII).
+</theorem>
+
+<proof>
+Every UFD is integrally closed in its fraction field.
+</proof>
+
+<theorem>
+(VII) => (II).
+</theorem>
+
+<proof>
+Let $(R,\mathfrak{m})$ satisfy (VII) and pick nonzero $r\in\mathfrak{m}$. By Krull's principal ideal theorem, $S=A/(r)$ is a zero-dimensional Noetherian local ring whose unique prime ideal $\mathfrak{n}$ is the image of $\mathfrak{m}$. Thus $\mathfrak{n}^N=0$ for $N\gg 0$.
+
+Choose $n$ such that $\mathfrak{m}^n\subset(r)$ but $\mathfrak{m}^{n-1}\not\subset(r)$, and pick $s\in\mathfrak{m}^{n-1}\setminus(r)$. Let $x=s/r\in\mathrm{K}(A)$. Since $s\notin(r)$, we have $x\notin A$, and since $A$ is integrally closed, $x$ is not integral over $A$.
+
+We claim $x\mathfrak{m}\not\subset\mathfrak{m}$: if it were, $\mathfrak{m}$ would be a faithful $A[x]$-module, forcing $x$ to be integral over $A$, a contradiction. On the other hand, since $s\in\mathfrak{m}^{n-1}$, we have $s\mathfrak{m}\subset\mathfrak{m}^n\subset(r)$, so $x\mathfrak{m}=(s/r)\mathfrak{m}\subset A$. Together these give $x\mathfrak{m}=A$, hence $\mathfrak{m}=(r/s)A$ is principal.
+</proof>
+
+<p>We have now established the equivalences among all seven definitions, demonstrating that discrete valuation rings have a remarkably rich structure accessible from many different perspectives.</p>
+
+<h2>Dedekind Domains</h2>
+
+<definition name="Dedekind Domain">
+An integral domain $A$ is a <b>Dedekind domain</b> if:
+<ol>
+    <li>$A$ is Noetherian;</li>
+    <li>$A$ has Krull dimension $1$;</li>
+    <li>$A$ is integrally closed in $\mathrm{K}(A)$.</li>
+</ol>
+</definition>
+
+<p>Discrete valuation rings characterize Dedekind domains locally:</p>
+
+<theorem name="Local Property of Dedekind Domains">
+An integral domain $A$ is a Dedekind domain if and only if $A$ is Noetherian and, for every nonzero prime ideal $\mathfrak{p}$, the localization $A_{\mathfrak{p}}$ is a discrete valuation ring.
+</theorem>
+
+<proof>
+We use definition (VII) for DVRs.
+
+If $A$ is a Dedekind domain, it is Noetherian and integrally closed. Localization preserves both properties, so $A_{\mathfrak{p}}$ is Noetherian and integrally closed. The prime ideals of $A_{\mathfrak{p}}$ correspond to primes of $A$ contained in $\mathfrak{p}$; since $A$ has Krull dimension $1$, these are only $\mathfrak{p}$ and $(0)$, so $A_{\mathfrak{p}}$ has Krull dimension $1$. Hence $A_{\mathfrak{p}}$ satisfies (VII) and is a DVR.
+
+Conversely, suppose $A$ is Noetherian and each $A_{\mathfrak{p}}$ is a DVR. If $A$ had dimension greater than $1$, there would exist a strict chain $(0)\subsetneq\mathfrak{p}_1\subsetneq\mathfrak{p}_2$. Localizing at $\mathfrak{p}_2$ yields a strict chain $(0)\subsetneq\mathfrak{p}_1 A_{\mathfrak{p}_2}\subsetneq\mathfrak{p}_2 A_{\mathfrak{p}_2}$ in $A_{\mathfrak{p}_2}$, giving Krull dimension at least $2$, contradicting the DVR hypothesis.
+
+For integral closure: since $A=\bigcap_{\mathfrak{m}\text{ maximal}} A_{\mathfrak{m}}$ and each $A_{\mathfrak{m}}$ is a DVR (hence integrally closed), and an intersection of integrally closed domains is integrally closed, $A$ is integrally closed. All conditions are satisfied.
+</proof>
+
+<h2>Geometric Meaning</h2>
+
+<p>We now translate these algebraic notions into the language of scheme theory.</p>
+
+<definition name="Affine Regular Curve">
+An affine scheme $\mathrm{Spec}~A$ is an <b>affine regular curve</b> if it satisfies:
+<ol>
+    <li>Krull dimension $1$;</li>
+    <li>Regular scheme;</li>
+    <li>Noetherian scheme;</li>
+    <li>Integral scheme (reduced and irreducible).</li>
+</ol>
+</definition>
+
+<theorem>
+$\mathrm{Spec}~A$ is an affine regular curve if and only if $A$ is a Dedekind domain.
+</theorem>
+
+<proof>
+We translate the conditions into algebra:
+<ul>
+    <li>Krull dimension $1$ &lt;=> $A$ has Krull dimension $1$.</li>
+    <li>Regular scheme &lt;=> each local ring $A_{\mathfrak{p}}$ is regular &lt;=> (by the theorem on Dedekind domains) each $A_{\mathfrak{p}}$ is a DVR.</li>
+    <li>Noetherian scheme &lt;=> $A$ is Noetherian.</li>
+    <li>Integral scheme &lt;=> $A$ is an integral domain.</li>
+</ul>
+Combined with the local characterization theorem, this is exactly the definition of a Dedekind domain.
+</proof>
