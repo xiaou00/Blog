@@ -2,7 +2,7 @@
 set -e
 
 PORT=${PORT:-8080}
-DIR="$(cd "$(dirname "$0")" && pwd)/blog"
+DIR="$(cd "$(dirname "$0")" && pwd)"
 
 if command -v npx &>/dev/null; then
   echo "Serving at http://localhost:$PORT (live-reload enabled)"

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xiaou0</title>
+    <link rel="icon" href="blog/resources/icon.png">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&display=swap');
+        @import url('https://cdn.jsdelivr.net/npm/lxgw-wenkai-screen-webfont@1.7.0/style.css');
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: "JetBrains Mono", "LXGW WenKai Screen", monospace;
+            background: #ffffff;
+            color: #111111;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+        }
+
+        a { color: inherit; text-decoration: none; }
+
+        .container {
+            max-width: 680px;
+            margin: 0 auto;
+            padding: 4rem 1.5rem;
+            width: 100%;
+        }
+
+        .top-bar {
+            display: flex;
+            align-items: baseline;
+            justify-content: space-between;
+            margin-bottom: 2.5rem;
+        }
+
+        .prompt {
+            font-size: 0.82rem;
+            color: #777777;
+        }
+
+        .prompt span { color: #cc0000; }
+
+        .lang-nav {
+            display: flex;
+            gap: 0.6rem;
+        }
+
+        .lang-nav a {
+            font-size: 0.82rem;
+            color: #444444;
+            transition: color 0.15s;
+        }
+
+        .lang-nav a:hover { color: #cc0000; }
+        .lang-active { color: #cc0000 !important; }
+
+        h1 {
+            font-size: 2rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            line-height: 1.2;
+            margin-bottom: 1rem;
+        }
+
+        h1 .hash { color: #cc0000; }
+
+        .bio {
+            font-size: 0.95rem;
+            color: #444444;
+            margin-bottom: 2.5rem;
+            max-width: 480px;
+        }
+
+        .bio p + p { margin-top: 0.6rem; }
+
+        .section-label {
+            font-size: 0.72rem;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: #777777;
+            margin-bottom: 0.8rem;
+        }
+
+        .links {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            margin-bottom: 3rem;
+            border-top: 1px solid #e4e4e4;
+        }
+
+        .link-item {
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+            padding: 0.7rem 0;
+            border-bottom: 1px solid #e4e4e4;
+            transition: color 0.15s;
+            cursor: pointer;
+        }
+
+        .link-item:hover { color: #cc0000; }
+        .link-item:hover .link-arrow { color: #cc0000; }
+
+        .link-arrow {
+            color: #cc0000;
+            font-weight: 700;
+            flex-shrink: 0;
+            width: 1.2rem;
+        }
+
+        .link-name {
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+
+        .link-desc {
+            font-size: 0.8rem;
+            color: #777777;
+            margin-left: auto;
+        }
+
+        .link-item:hover .link-desc { color: #cc0000; }
+
+        footer {
+            font-size: 0.78rem;
+            color: #777777;
+            border-top: 1px solid #e4e4e4;
+            padding-top: 1.2rem;
+        }
+
+        @media (max-width: 480px) {
+            .container { padding: 3rem 1.1rem; }
+            h1 { font-size: 1.5rem; }
+            .link-desc { display: none; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="top-bar">
+            <p class="prompt"><span>~</span> whoami</p>
+            <nav class="lang-nav">
+                <a href="index.html" class="lang-active">[English]</a>
+                <a href="index.zh.html">[中文]</a>
+            </nav>
+        </div>
+
+        <h1><span class="hash">#</span> xiaou0</h1>
+
+        <div class="bio">
+            <p>Math student. Interested in algebra, geometry, and number theory.</p>
+            <p>Occasionally writes code, plays Minecraft, and watch anime.</p>
+        </div>
+
+        <p class="section-label">// links</p>
+
+        <div class="links">
+            <a class="link-item" href="blog/index.html">
+                <span class="link-arrow">&gt;</span>
+                <span class="link-name">blog</span>
+                <span class="link-desc">notes on math &amp; daily life</span>
+            </a>
+            <a class="link-item" href="https://github.com/xiaou00" target="_blank" rel="noopener">
+                <span class="link-arrow">&gt;</span>
+                <span class="link-name">github</span>
+                <span class="link-desc">xiaou00</span>
+            </a>
+            <a class="link-item" href="mailto:xiaou0qwq@gmail.com">
+                <span class="link-arrow">&gt;</span>
+                <span class="link-name">email</span>
+                <span class="link-desc">xiaou0qwq@gmail.com</span>
+            </a>
+        </div>
+
+        <footer>&copy; 2026 xiaou0</footer>
+    </div>
+</body>
+</html>
