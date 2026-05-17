@@ -61,5 +61,12 @@
         "date": "2026-04-30",
         "tag": ["math"],
         "langs": ["en", "zh"]
+    },
+    {
+        "slug": "math-misc/line-bundle-on-projective-space",
+        "title": { "en": "Line Bundles on Projective Spaces", "zh": "射影空间上的线丛" },
+        "date": "2026-05-18",
+        "tag": ["math"],
+        "langs": ["en", "zh"]
     }
 ]

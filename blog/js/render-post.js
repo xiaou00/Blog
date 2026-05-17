@@ -7,6 +7,15 @@ function processCodeBlocks(container) {
             .find(c => c.startsWith('language-'))
             ?.slice('language-'.length) ?? '';
 
+        if (lang === 'tikz') {
+            const tikzScript = document.createElement('script');
+            tikzScript.type = 'text/tikz';
+            tikzScript.setAttribute('data-show-console', 'true');
+            tikzScript.textContent = code.textContent;
+            pre.replaceWith(tikzScript);
+            continue;
+        }
+
         if (typeof hljs !== 'undefined') hljs.highlightElement(code);
 
         // Wrap in .code-block
@@ -48,6 +57,16 @@ function processCodeBlocks(container) {
 
         toolbar.append(label, btn);
         wrapper.insertBefore(toolbar, pre);
+    }
+
+    // Wrap every tikz script in a centering container (covers both inline
+    // <script type="text/tikz"> and ones promoted from code blocks above).
+    for (const script of container.querySelectorAll('script[type="text/tikz"]')) {
+        if (script.parentElement?.classList.contains('tikz-wrap')) continue;
+        const wrap = document.createElement('div');
+        wrap.className = 'tikz-wrap';
+        script.parentNode.insertBefore(wrap, script);
+        wrap.appendChild(script);
     }
 }
 

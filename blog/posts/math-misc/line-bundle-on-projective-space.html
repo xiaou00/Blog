@@ -1,0 +1,246 @@
+<p>In this post we introduce the most typical line bundle (locally free sheaf) $\mathcal O(m)$ on projective space $\mathbb P^n_k$, give it a very concrete description, and prove the main theorem without invoking the theory of divisors.</p>
+
+<theorem name="Goal">
+For the projective space $\mathbb P^n_k$, we have $\operatorname{Pic}\mathbb P^n_k\simeq\mathbb Z$.
+</theorem>
+
+<p>Along the way we describe the sections of $\mathcal O(m)$ and a few other important properties.</p>
+
+<h2>The sheaf $\mathcal O(1)$ on $\mathbb P^1$</h2>
+
+<p>Let us start with the simplest case, namely the definition of the sheaf $\mathcal O(1)$ on $\mathbb P^1$. Recall that projective space is the Proj construction
+$$\mathbb P^n_k:=\operatorname{Proj}k[x_0,x_1]$$
+and admits two standard affine open subsets
+$$U_0=D_+(x_0)\simeq\operatorname{Spec}k[x_{1/0}],\quad U_1=D_+(x_1)\simeq\operatorname{Spec}k[x_{0/1}]$$
+where $x_{i/j}$ denotes $x_i/x_j$ viewed as a coordinate. Write $t:=x_{1/0}$ and $u:=x_{0/1}$.</p>
+
+<p>These two charts can be pictured as two affine lines glued together, as shown below:</p>
+
+<script type="text/tikz" data-show-console="true">
+\begin{tikzpicture}[x=0.75pt,y=0.75pt,yscale=-1,xscale=1,line width=0.75pt]
+\draw  [draw opacity=0] (127.64,187.91) .. controls (112.18,186.71) and (100,173.77) .. (100,158) .. controls (100,141.43) and (113.43,128) .. (130,128) .. controls (146.57,128) and (160,141.43) .. (160,158) .. controls (160,173.53) and (148.19,186.31) .. (133.06,187.85) -- (130,158) -- cycle ; \draw   (127.64,187.91) .. controls (112.18,186.71) and (100,173.77) .. (100,158) .. controls (100,141.43) and (113.43,128) .. (130,128) .. controls (146.57,128) and (160,141.43) .. (160,158) .. controls (160,173.53) and (148.19,186.31) .. (133.06,187.85) ;
+\draw  [draw opacity=0] (132.59,132.13) .. controls (145.73,133.43) and (156,144.51) .. (156,158) .. controls (156,172.36) and (144.36,184) .. (130,184) .. controls (115.64,184) and (104,172.36) .. (104,158) .. controls (104,144.47) and (114.33,133.36) .. (127.53,132.12) -- (130,158) -- cycle ; \draw   (132.59,132.13) .. controls (145.73,133.43) and (156,144.51) .. (156,158) .. controls (156,172.36) and (144.36,184) .. (130,184) .. controls (115.64,184) and (104,172.36) .. (104,158) .. controls (104,144.47) and (114.33,133.36) .. (127.53,132.12) ;
+\draw [color={rgb, 255:red, 162; green, 61; blue, 61 }  ,draw opacity=1 ]   (112.8,207.6) .. controls (119.43,219.3) and (147.73,208.57) .. (132.83,192.82) ;
+\draw [shift={(131.6,191.6)}, rotate = 42.98] [color={rgb, 255:red, 162; green, 61; blue, 61 }  ,draw opacity=1 ][line width=0.75]    (6.56,-1.97) .. controls (4.17,-0.84) and (1.99,-0.18) .. (0,0) .. controls (1.99,0.18) and (4.17,0.84) .. (6.56,1.97)   ;
+\draw [color={rgb, 255:red, 162; green, 61; blue, 61 }  ,draw opacity=1 ]   (140.4,116.4) .. controls (128.81,112.69) and (135.6,126.8) .. (140,134.4) .. controls (144.27,141.77) and (131.98,155.17) .. (130.5,137.34) ;
+\draw [shift={(130.4,135.6)}, rotate = 87.75] [color={rgb, 255:red, 162; green, 61; blue, 61 }  ,draw opacity=1 ][line width=0.75]    (6.56,-1.97) .. controls (4.17,-0.84) and (1.99,-0.18) .. (0,0) .. controls (1.99,0.18) and (4.17,0.84) .. (6.56,1.97)   ;
+\draw [color={rgb, 255:red, 61; green, 134; blue, 162 }  ,draw opacity=1 ]   (165.2,177.6) .. controls (165.59,165.45) and (126.8,151.76) .. (129.77,178.32) ;
+\draw [shift={(130,180)}, rotate = 260.54] [color={rgb, 255:red, 61; green, 134; blue, 162 }  ,draw opacity=1 ][line width=0.75]    (6.56,-1.97) .. controls (4.17,-0.84) and (1.99,-0.18) .. (0,0) .. controls (1.99,0.18) and (4.17,0.84) .. (6.56,1.97)   ;
+\draw [color={rgb, 255:red, 61; green, 134; blue, 162 }  ,draw opacity=1 ]   (98,124) .. controls (103.82,109.64) and (122.06,104.32) .. (128.99,123) ;
+\draw [shift={(129.6,124.8)}, rotate = 252.9] [color={rgb, 255:red, 61; green, 134; blue, 162 }  ,draw opacity=1 ][line width=0.75]    (6.56,-1.97) .. controls (4.17,-0.84) and (1.99,-0.18) .. (0,0) .. controls (1.99,0.18) and (4.17,0.84) .. (6.56,1.97)   ;
+\draw (92.2,195.8) node [anchor=north west][inner sep=0.75pt]    {$\infty _{0}$};
+\draw (141.8,109.8) node [anchor=north west][inner sep=0.75pt]    {$\infty _{1}$};
+\draw (84.2,118) node [anchor=north west][inner sep=0.75pt]    {$0_{0}$};
+\draw (160.6,178.2) node [anchor=north west][inner sep=0.75pt]    {$0_{1}$};
+\end{tikzpicture}
+</script>
+
+<p>On $U_0\cap U_1$ we always have $u=1/t$, that is,
+$$\begin{aligned}
+\Gamma(\mathcal O_{\mathbb P^1},U_0)&=k[t]\\
+\Gamma(\mathcal O_{\mathbb P^1},U_1)=k[u]&=k[1/t]\\
+\Gamma(\mathcal O_{\mathbb P^1},U_0\cap U_1)=k[t]\otimes_kk[1/t]&=k[t,1/t]
+\end{aligned}$$</p>
+
+<p>With the setup in place, we define the line bundle $\mathcal O(1)$ by gluing two trivial line bundles on $\mathbb P^1$. On $U_0$ take a rank $1$ trivial $\mathcal O_{U_0}$-module
+$$\mathcal O_{U_0}e_0$$
+and on $U_1$ a rank $1$ trivial $\mathcal O_{U_1}$-module
+$$\mathcal O_{U_1}e_1$$
+We need to glue them on the overlap $U_0\cap U_1$, and we declare the gluing relation
+$$e_1=t\cdot e_0$$
+Clearly $t=x_1/x_0$ is an invertible function on $U_0\cap U_1$, so this is a legitimate transition function. The resulting line bundle is denoted $\mathcal O(1)$. A section of this sheaf can be written as a pair $(f_0,f_1)\in k[t]\times k[u]$ satisfying $f_0e_0=f_1e_1$; since $e_1=t\cdot e_0$, we get $f_0=tf_1$, i.e. $f_0(t)=tf_1(1/t)$ in $k[t,1/t]$.</p>
+
+<p>Let us compute the global sections of $\mathcal O(1)$. Write
+$$f_1(u)=a_0+a_1u+a_2u^2+\cdots+a_ru^r$$
+Then
+$$\begin{aligned}tf_1(1/t)&=t(a_0+a_1t^{-1}+a_2t^{-2}+\cdots+a_rt^{-r})\\ &=a_0t+a_1+a_2t^{-1}+\cdots+a_rt^{1-r}\end{aligned}$$
+For this to lie in $k[t]$, no negative powers of $t$ may appear, so necessarily
+$$a_2=a_3=\cdots=a_r=0$$
+Hence $f_1(u)=a_0+a_1u$ and $f_0(t)=a_0t+a_1$, both linear functions. Since $k$ is a field,
+$$\Gamma(\mathbb P^1_k,\mathcal O(1))$$
+is a vector space, and it has dimension $2$ since it is generated by the two sections $x_0$ and $x_1$. Explicitly,
+$$x_0\leftrightarrow(1,u),\quad x_1\leftrightarrow(t,1)$$
+because on $U_0$, $x_0/x_0=1$ and on $U_1$, $x_0/x_1=1$; on $U_0$, $x_1/x_0=t$ and on $U_1$, $x_1/x_1=1$. Therefore
+$$\Gamma(\mathbb P^1_k,\mathcal O(1))= kx_0\oplus kx_1$$
+This bundle is clearly nontrivial because $\dim_k\Gamma(\mathbb P^1_k,\mathcal O)=1$.</p>
+
+<h2>The sheaf $\mathcal O(m)$ on $\mathbb P^1$ for $m\ge 0$</h2>
+
+<p>Next we describe the slightly more general (but still elementary) sheaf $\mathcal O(m)$; the only change is that the transition function now carries a power. Again take
+$$\mathcal O_{U_0}e_0,\quad\mathcal O_{U_1}e_1$$
+as two free rank-$1$ modules, and declare the gluing relation
+$$e_1=t^me_0$$
+The resulting line bundle is $\mathcal O(m)$. A global section is a pair $(f_0(t),f_1(u))\in k[t]\times k[u]$ satisfying
+$$f_0(t)=t^mf_1(1/t)$$
+To compute $\Gamma(\mathbb P^1_k,\mathcal O(m))$, write again
+$$f_1(u)=a_0+a_1u+a_2u^2+\cdots+a_ru^r$$
+Then
+$$\begin{aligned}f_0(t)&=t^m(a_0+a_1t^{-1}+\cdots+a_rt^{-r})\\ &=a_0t^m+a_1t^{m-1}+\cdots+a_rt^{m-r}\end{aligned}$$
+Negative powers must vanish, so we are left with
+$$f_1(u)=a_0+a_1u+a_2u^2+\cdots+a_mu^m,\quad f_0(t)=a_0t^m+a_1t^{m-1}+\cdots+a_m$$
+all of degree $m$. The generators of $\Gamma(\mathbb P^1_k,\mathcal O(m))$ are
+$$x_0^m,x_0^{m-1}x_1,\ldots, x_1^m$$
+corresponding to
+$$(1,u^m),(t,u^{m-1}),\ldots,(t^m,1)$$
+Why? Simply divide by $x_0^m$ on $U_0$ and by $x_1^m$ on $U_1$. Hence
+$$\Gamma(\mathbb P^1,\mathcal O(m))\simeq\bigoplus_{i=0}^m{kx_0^ix_1^{m-i}}$$</p>
+
+<h2>The sheaf $\mathcal O(m)$ on $\mathbb P^1$ for $m<0$</h2>
+
+<p>Now consider the sheaf $\mathcal O(-m)$ on $\mathbb P^1_k$, say $\mathcal O(-1)$. The gluing relation becomes
+$$e_1=t^{-1}e_0$$
+A global section is a pair
+$$(f_0(t),f_1(u))\in k[t]\times k[u]$$
+satisfying $f_0(t)=t^{-1}f_1(1/t)$. Arguing as before, unless every coefficient of $f_1$ vanishes there will always be some negative power; hence $\Gamma(\mathbb P^1_k,\mathcal O(-1))=0$, and the same holds for any $-m$.</p>
+
+<h2>The sheaf $\mathcal O(m)$ on $\mathbb P^n$</h2>
+
+<p>Now consider
+$$\mathbb P^n_k:=\operatorname{Proj}k[x_0,\ldots,x_n]$$
+whose standard opens are $U_i:=D_+(x_i)=\{x_i\ne 0\}$. On $U_i$ define $\mathcal O(m)|_{U_i}$ to be the trivial bundle $\mathcal O_{U_i}e_i$. On the overlap $U_i\cap U_j$ declare the gluing relation
+$$e_j=\left(\frac{x_j}{x_i}\right)^me_i$$
+The functions $g_{ij}=\left(\dfrac{x_j}{x_i}\right)^m$ are regular invertible functions on the overlap and satisfy the cocycle condition
+$$g_{ij}g_{jk}=g_{ik}$$
+which is obvious because
+$$\left(\frac{x_{j}}{x_{i}}\right)^m\left(\frac{x_{k}}{x_{j}}\right)^m=\left(\frac{x_{k}}{x_{i}}\right)^m$$
+They glue into a line bundle, namely $\mathcal O_{\mathbb P^n}(m)$. Similarly, writing a section as $f_ie_i$ on $U_i$ with $f_i\in\mathcal O(U_i)$, we have $f_ie_i=f_je_j$ on $U_i\cap U_j$, which immediately gives
+$$f_i=\left(\frac{x_{j}}{x_{i}}\right)^mf_j$$</p>
+
+<h2>Operations on the sheaves $\mathcal O(m)$</h2>
+
+<p>We have the following crucial result.</p>
+
+<theorem name="Homomorphism property">
+$\mathcal O$ is a group homomorphism $\mathbb Z\to\operatorname{Pic}\mathbb P^n_k$; that is, over a field $k$ and projective space $\mathbb P^n_k$ we have
+$$\mathcal O(a)\otimes_{\mathcal O_{\mathbb P^n}}\mathcal O(b)\simeq\mathcal O(a+b)$$
+In particular, we will prove the following four facts (we omit the base of the tensor product):
+<ol>
+    <li>$\mathcal O(m)\simeq\mathcal O(1)^{\otimes m},\quad m>0$;</li>
+    <li>$\mathcal O(-m)\simeq\mathcal O(-1)^{\otimes m},\quad m>0$;</li>
+    <li>$\mathcal O(m)^\lor\simeq\mathcal O(-m)$;</li>
+    <li>$\mathcal O(m)\otimes\mathcal O(-m)\simeq\mathcal O$.</li>
+</ol>
+</theorem>
+
+<p>We set up notation: for each $\mathcal O(m)$, on each standard open $U_i$ write the rank-$1$ $\mathcal O_{U_i}$-module basis as $e_i^{(m)}$. We have
+$$e_j^{(m)}=\left(\frac{x_j}{x_i}\right)^me_i^{(m)}$$
+and set
+$$g_{ij}^{(m)}=x_{i/j}^m=\left(\frac{x_j}{x_i}\right)^m$$
+which satisfies the cocycle condition.</p>
+
+<proof>
+<p><b>(Proof of 1 and 2.)</b> Let $\mathcal L=\mathcal O(1)^{\otimes m}$. On each $U_i$ the local basis of $\mathcal O(1)$ is $e_i^{(1)}$, so a local basis of $\mathcal L|_{U_i}$ may be taken to be
+$$f_i=\underbrace{e_i^{(1)}\otimes\cdots\otimes e_i^{(1)}}_{\#m}$$
+The definition of $\mathcal O(1)$ gives
+$$e_i^{(1)}=\frac{x_j}{x_i}e_j^{(1)}$$
+so on the overlap $U_i\cap U_j$
+$$\begin{aligned}
+f_i&=\overbrace{e_i^{(1)}\otimes\cdots\otimes e_i^{(1)}}^{\#m}\\
+&=\overbrace{\left(\frac{x_j}{x_i}e_j^{(1)}\right)\otimes\cdots\otimes\left(\frac{x_j}{x_i}e_j^{(1)}\right)}^{\#m}\\
+&=\left(\frac{x_j}{x_i}\right)^m\left(\overbrace{e_j^{(1)}\otimes\cdots\otimes e_j^{(1)}}^{\#m}\right)\\
+&=\left(\frac{x_j}{x_i}\right)^mf_j
+\end{aligned}$$
+Hence the transition function of $\mathcal O(1)^{\otimes m}$ is $x_{j/i}^m$, which is precisely the transition function of $\mathcal O(m)$. The local isomorphisms $\phi_i:f_i\leftrightarrow e_i^{(m)}$ are immediate, and one checks easily that they are compatible on overlaps.</p>
+
+<p>The proof of 2 is identical in form, only with different symbols.</p>
+</proof>
+
+<proof>
+<p><b>(Proof of 3.)</b> We know
+$$\mathcal O(m)^\lor=\mathscr{H\!\!om}_{\mathcal O_X}(\mathcal O(m),\mathcal O)$$
+On $U_i$ the basis of $\mathcal O(m)$ is $e_i^{(m)}$, and we can clearly construct the dual basis $\left(e_i^{(m)}\right)^\lor$ satisfying
+$$\left(e_i^{(m)}\right)^\lor\left(e_i^{(m)}\right)=1$$
+Now on the overlap $U_i\cap U_j$ consider
+$$e_i^{(m)}=\left(\frac{x_j}{x_i}\right)^me_j^{(m)}$$
+so
+$$e_j^{(m)}=\left(\frac{x_j}{x_i}\right)^{-m}e_i^{(m)}$$
+Set
+$$\left(e_i^{(m)}\right)^\lor=a_{ij}\left(e_j^{(m)}\right)^\lor$$
+Applying both sides to $e_i^{(m)}$ gives
+$$1=\left(e_i^{(m)}\right)^\lor\left(e_i^{(m)}\right)=a_{ij}\left(e_j^{(m)}\right)^\lor\left(\left(\frac{x_j}{x_i}\right)^me_j^{(m)}\right)$$
+hence
+$$1=a_{ij}\left(\frac{x_j}{x_i}\right)^m,\quad a_{ij}=\left(\frac{x_j}{x_i}\right)^{-m}$$
+So the transition function of $\mathcal O(m)^\lor$ is $\left(\dfrac{x_j}{x_i}\right)^{-m}$, the same as $\mathcal O(-m)$, giving the isomorphism.</p>
+</proof>
+
+<proof>
+<p><b>(Proof of 4.)</b> On $U_i$ consider the local basis of $\mathcal O(m)\otimes\mathcal O(-m)$,
+$$e_i^{(m)}\otimes e_i^{(-m)}$$
+On the overlap $U_i\cap U_j$,
+$$e_i^{(m)}=\left(\frac{x_j}{x_i}\right)^me_j^{(m)}$$
+and
+$$e_i^{(-m)}=\left(\frac{x_j}{x_i}\right)^{-m}e_j^{(-m)}$$
+so
+$$\begin{aligned}e_i^{(m)}\otimes e_i^{(-m)}&=\left(\frac{x_j}{x_i}\right)^me_j^{(m)}\otimes\left(\frac{x_j}{x_i}\right)^{-m}e_j^{(-m)}\\ &=\left(\frac{x_j}{x_i}\right)^m\left(\frac{x_j}{x_i}\right)^{-m}\left(e_j^{(m)}\otimes e_j^{(-m)}\right)\\&=e_j^{(m)}\otimes e_j^{(-m)}\end{aligned}$$
+Hence the transition function is $1$, the same as $\mathcal O$, giving the isomorphism analogously.</p>
+</proof>
+
+<h2>Proof of injectivity and surjectivity</h2>
+
+<p>We now prove Theorem 1 from the start of the article. It suffices to prove the two theorems below (injectivity and surjectivity); the proofs look long but consist entirely of elementary algebraic manipulations.</p>
+
+<theorem name="Injectivity of the homomorphism">
+If $\mathcal O(m)\simeq\mathcal O(r)$, then $m=r$.
+</theorem>
+
+<proof>
+Assuming $\mathcal O(m)\simeq\mathcal O(r)$, tensor with $\mathcal O(-r)$ to obtain
+$$\mathcal O(m-r)\simeq\mathcal O$$
+The problem reduces to showing $\mathcal O(q)\simeq\mathcal O\implies q=0$. The transition function of $\mathcal O(q)$ is
+$$\left(\frac{x_j}{x_i}\right)^q$$
+If $\mathcal O(q)$ were trivial, this family of transition functions could be turned into the constant $1$ by a change of local basis. But on $U_i\simeq\mathbb A^n_k$ the only invertible regular functions are constants, $\Gamma(U_i,\mathcal O^\times_X)=k^\times$, so a change of basis can only modify the transition function to
+$$b_i\left(\frac{x_j}{x_i}\right)^qb^{-1}_j=\frac{b_i}{b_j}\left(\frac{x_j}{x_i}\right)^q$$
+with $b_i,b_j\in k^\times$. A constant factor cannot cancel a nonzero power, so $\mathcal O(q)$ can be trivial only when $q=0$.
+</proof>
+
+<theorem name="Surjectivity of the homomorphism">
+Let $\mathcal L$ be an invertible sheaf on $\mathbb P^n_k$. Then there exists $m\in\mathbb Z$ such that $\mathcal L\simeq\mathcal O(m)$.
+</theorem>
+
+<proof>
+Write
+$$X=\mathbb P^n_k,\quad U_i=D_+(x_i),\quad i=0,\ldots,n$$
+so that $U_i\simeq\mathbb A^n_k$. Let $\mathcal L$ be an arbitrary invertible sheaf on $X$. Since every invertible sheaf on $\mathbb A^n_k$ is trivial, we may choose $\mathcal L|_{U_i}\simeq\mathcal O|_{U_i}$, i.e. pick a local basis on each $U_i$,
+$$e_i\in\Gamma(U_i,\mathcal L)$$
+On the overlap $U_i\cap U_j$ the two bases $e_i,e_j$ are related by some regular invertible function $g_{ij}$:
+$$e_i=g_{ij}e_j$$
+with $g_{ij}\in\Gamma(U_i\cap U_j,\mathcal O_X^\times)$. From $e_i=g_{ij}e_j$ and $e_j=g_{jk}e_k$ we get $e_i=g_{ij}g_{jk}e_k$, and on the other hand $e_i=g_{ik}e_k$, so $g_{ij}g_{jk}=g_{ik}$ (the cocycle condition). Thus an invertible sheaf is described by a family of invertible functions $\{g_{ij}\}$ satisfying $g_{ij}\in\Gamma(U_i\cap U_j,\mathcal O^\times_X)$ and $g_{ij}g_{jk}=g_{ik}$.
+
+Next, look at regular invertible functions on $U_i\cap U_j$. On $U_i\simeq\mathbb A^n_k$ we may use the coordinates
+$$\frac{x_0}{x_i},\ldots,\widehat{\frac{x_i}{x_i}},\ldots,\frac{x_n}{x_i}$$
+and
+$$U_i\cap U_j=D\left(\frac{x_j}{x_i}\right)\subset U_i$$
+so
+$$\Gamma(U_i\cap U_j,\mathcal O_X)\simeq k\left[\frac{x_0}{x_i},\ldots,\widehat{\frac{x_i}{x_i}},\ldots,\frac{x_n}{x_i},\left(\frac{x_j}{x_i}\right)^{-1}\right]$$
+This is a polynomial ring with one variable inverted; its units are exactly
+$$c\left(\frac{x_j}{x_i}\right)^a,\quad c\in k^\times,\quad a\in\mathbb Z$$
+Hence every transition function can be written uniquely as
+$$g_{ij}=c_{ij}\left(\frac{x_j}{x_i}\right)^{a_{ij}},\quad c_{ij}\in k^\times,\quad a_{ij}\in\mathbb Z$$
+Applying the cocycle condition gives
+$$c_{ij}c_{jk}\left(\frac{x_j}{x_i}\right)^{a_{ij}}\left(\frac{x_k}{x_j}\right)^{a_{jk}}=c_{ik}\left(\frac{x_k}{x_i}\right)^{a_{ik}}\tag{I}$$
+On the triple overlap $U_i\cap U_j\cap U_k$ set
+$$u=\frac{x_j}{x_i},\quad v=\frac{x_k}{x_i}$$
+so that $\dfrac{x_k}{x_j}=\dfrac{v}{u}$. The monomial part of the left side of (I) becomes
+$$u^{a_{ij}}\left(\frac vu\right)^{a_{jk}}=u^{a_{ij}-a_{jk}}v^{a_{jk}}$$
+and the right side is
+$$v^{a_{ik}}$$
+Hence $a_{ij}-a_{jk}=0$ and $a_{jk}=a_{ik}$, so $a_{ij}=a_{jk}=a_{ik}$. All the $a_{ij}$ are equal to some common integer, call it $m$. Therefore
+$$g_{ij}=c_{ij}\left(\frac{x_j}{x_i}\right)^m\tag{II}$$
+In particular, for $n=1$ there are only two opens $U_0,U_1$ and no nonempty triple overlaps, so directly
+$$g_{01}\in\Gamma(U_0\cap U_1,\mathcal O^\times)=k^\times\left(\frac{x_1}{x_0}\right)^\mathbb Z$$
+which still has the form
+$$g_{01}=c_{01}\left(\frac{x_1}{x_0}\right)^m$$
+So (II) holds in every $n\ge 1$.
+
+It remains to handle the constants $c_{ij}\in k^\times$. The cocycle condition $c_{ij}c_{jk}=c_{ik}$ says $\{c_{ij}\}$ is itself a $1$-cocycle of constant functions. We kill it by a change of basis: set
+$$b_i=c_{0i}\in k^\times$$
+Then $c_{0i}c_{ij}=c_{0j}$ gives $c_{ij}=\dfrac{c_{0j}}{c_{0i}}$. Replacing the local bases by $e'_i=b_ie_i$, the relation $e_i=g_{ij}e_j$ becomes
+$$e'_i=b_ie_i=b_ig_{ij}e_j=b_ig_{ij}b^{-1}_je'_j$$
+so the new transition function is $g'_{ij}=b_ig_{ij}b^{-1}_j$. Plugging into (II),
+$$g'_{ij}=b_ic_{ij}b^{-1}_j\left(\frac{x_j}{x_i}\right)^m$$
+and
+$$b_ic_{ij}b^{-1}_j=c_{0i}\cdot\frac{c_{0j}}{c_{0i}}\cdot c^{-1}_{0j}=1$$
+so
+$$g'_{ij}=\left(\frac{x_j}{x_i}\right)^m$$
+which is the transition function of $\mathcal O(m)$. Q.E.D.
+</proof>
